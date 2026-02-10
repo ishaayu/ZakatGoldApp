@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity {
 
     // UI Components
-    TextInputEditText etWeight, etGoldValue; // Added etGoldValue
+    TextInputEditText etWeight, etGoldValue;
     AutoCompleteTextView spinnerType;
     Button btnCalculate, btnClear;
     TextView tvTotalValue, tvZakatPayable, tvTotalZakat;
@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 1. Initialize Views
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         etWeight = findViewById(R.id.etWeight);
-        etGoldValue = findViewById(R.id.etGoldValue); // New Input Field
+        etGoldValue = findViewById(R.id.etGoldValue);
         spinnerType = findViewById(R.id.spinnerType);
         btnCalculate = findViewById(R.id.btnCalculate);
         btnClear = findViewById(R.id.btnClear);
@@ -47,19 +47,19 @@ public class MainActivity extends AppCompatActivity {
         tvZakatPayable = findViewById(R.id.tvZakatPayable);
         tvTotalZakat = findViewById(R.id.tvTotalZakat);
 
-        // 2. Setup Dropdown (Keep vs Wear)
+
         String[] items = {"Keep", "Wear"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinnerType.setAdapter(adapter);
-        spinnerType.setKeyListener(null); // Disable typing inside spinner
+        spinnerType.setKeyListener(null);
 
-        // 3. Button Listeners
+
         btnCalculate.setOnClickListener(v -> calculateZakat());
         btnClear.setOnClickListener(v -> clearInputs());
     }
 
     private void calculateZakat() {
-        // Close keyboard
+
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         String valueStr = etGoldValue.getText().toString(); // Get Gold Value
         String type = spinnerType.getText().toString();
 
-        // Validation
+
         if (weightStr.isEmpty() || valueStr.isEmpty() || type.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
@@ -79,26 +79,22 @@ public class MainActivity extends AppCompatActivity {
         try {
             double weight = Double.parseDouble(weightStr);
             double currentGoldValue = Double.parseDouble(valueStr);
-            double X; // The threshold value (uruf)
+            double X;
 
-            // Determine X based on instruction
-            // Keep = 85g, Wear = 200g
+
             if (type.equalsIgnoreCase("Keep")) {
                 X = 85.0;
             } else {
                 X = 200.0;
             }
 
-            // --- CALCULATION LOGIC BASED ON YOUR INSTRUCTION ---
 
-            // Output i: Total Value of Gold (Weight * Value)
             double totalGoldValue = weight * currentGoldValue;
 
-            // Output iii: Gold weight minus X
+
             double weightMinusX = weight - X;
 
-            // Output ii: Total Gold Value that is Zakat Payable
-            // If weight is less than X, payable is 0
+
             double zakatPayableValue;
             if (weightMinusX <= 0) {
                 zakatPayableValue = 0;
@@ -106,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 zakatPayableValue = weightMinusX * currentGoldValue;
             }
 
-            // Output iv: The Total Zakat (2.5% of payable value)
+
             double totalZakat = zakatPayableValue * 0.025;
 
-            // --- DISPLAY RESULTS ---
+
             DecimalFormat currency = new DecimalFormat("RM #,##0.00");
 
             tvTotalValue.setText("Total Gold Value: " + currency.format(totalGoldValue));
