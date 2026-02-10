@@ -15,7 +15,7 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Gold Zakat Calculator" />
+        app:title="@string/app_title" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,13 +30,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Berat Emas (Gram)"
+                android:hint="@string/gold_weight_grams"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:hint="@string/gold_weight_grams"
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,50 +45,69 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Jenis Emas"
+                android:layout_marginTop="16dp"
+                android:hint="@string/type_of_gold"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/spinnerType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    />
+                    android:minHeight="48dp"
+                    android:hint="@string/type_of_gold"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/current_gold_value"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGoldValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:hint="@string/current_gold_value"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="16dp"
                 android:weightSum="2">
-
                 <Button
                     android:id="@+id/btnCalculate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Kira"
+                    android:text="@string/calculate"
                     android:layout_marginEnd="8dp"/>
-
                 <Button
                     android:id="@+id/btnClear"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Reset"
+                    android:text="@string/clear"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
 
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 app:cardElevation="4dp"
                 app:cardCornerRadius="8dp"
                 app:contentPadding="16dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,14 +117,14 @@
                         android:id="@+id/tvTotalValue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nilai Emas: RM 0.00"
+                        android:text="@string/total_gold_value"
                         android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/tvZakatPayable"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Berat Wajib Zakat: 0g"
+                        android:text="@string/zakat_payable_value"
                         android:textSize="16sp"
                         android:layout_marginTop="8dp"/>
 
@@ -118,7 +138,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Jumlah Zakat Perlu Dibayar"
+                        android:text="@string/total_zakat"
                         android:gravity="center"
                         android:textSize="14sp"/>
 
@@ -126,12 +146,11 @@
                         android:id="@+id/tvTotalZakat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="RM 0.00"
+                        android:text="@string/rm_0_00"
                         android:gravity="center"
                         android:textSize="32sp"
                         android:textStyle="bold"
                         android:textColor="#000000"/>
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

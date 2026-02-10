@@ -3,4 +3,13 @@
     <string name="calculate">Calculate</string>
     <string name="share">Share</string>
     <string name="about">About</string>
+    <string name="gold_weight_grams">Gold Weight (grams)</string>
+    <string name="type_of_gold">Type of Gold</string>
+    <string name="current_gold_value">Current Gold Value (RM/gram)</string>
+    <string name="clear">Clear</string>
+    <string name="total_gold_value">Total Gold Value: RM 0.00</string>
+    <string name="zakat_payable_value">Zakat Payable Value: RM 0.00</string>
+    <string name="total_zakat">Total Zakat</string>
+    <string name="rm_0_00">RM 0.00</string>
+    <string name="app_title">Gold Zakat Calculator</string>
 </resources>

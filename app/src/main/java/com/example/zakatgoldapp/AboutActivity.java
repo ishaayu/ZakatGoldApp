@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
+import android.widget.Button;
 
 public class AboutActivity extends AppCompatActivity {
 
-    Button btnGithub;
+    Button btnGithub, btnBack; // Added btnBack
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,26 +18,28 @@ public class AboutActivity extends AppCompatActivity {
 
 
         btnGithub = findViewById(R.id.btnGithub);
+        btnBack = findViewById(R.id.btnBack);
 
 
-        btnGithub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnGithub.setOnClickListener(v -> {
+            String url = "https://github.com/ishaayu/ZakatGoldApp";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        });
 
-                String url = "https://github.com/ishaayu/ZakatGoldApp";
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(url));
-                startActivity(intent);
-            }
+
+        btnBack.setOnClickListener(v -> {
+
+            finish();
         });
 
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("About");
+            getSupportActionBar().setTitle("About Developer");
         }
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {
