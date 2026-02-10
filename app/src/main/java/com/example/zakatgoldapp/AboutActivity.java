@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class AboutActivity extends AppCompatActivity {
 
-    Button btnGithub, btnBack; // Added btnBack
+    Button btnGithub, btnBack; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
