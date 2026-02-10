@@ -1,5 +1,5 @@
 
-# ZakatGoldApp (Option C) - Full Project
+# ZakatGoldApp
 
 This project is configured to be compatible with Android Studio Narwhal 2025.1.3 (AGP 8.7 + Gradle 8.8).
 
